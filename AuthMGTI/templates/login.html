@@ -1,0 +1,13 @@
+<h2>Iniciar Sesión</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>Usuario:</label><input type="text" name="username"><br>
+    <label>Contraseña:</label><input type="password" name="password"><br>
+    <button type="submit">Ingresar</button>
+</form>
+{% if messages %}
+    {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<a href="{% url 'register' %}"><button type="submit">Crear Cuenta</button></a>

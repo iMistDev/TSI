@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #Autenticación y Otras Apps
+    'django_otp',
+    'django_otp.plugins.otp_totp',
     'AuthMGTI',
 ]
 
@@ -48,7 +52,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    #Middleware del Auth
+    
+    'django_otp.middleware.OTPMiddleware',
 ]
+
+LOGIN_URL = '/'
 
 ROOT_URLCONF = 'SeguridadMGTI.urls'
 
