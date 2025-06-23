@@ -84,7 +84,7 @@ def verify_code(request):
     if request.method == 'POST':
         code = request.POST.get('code')
         totp = pyotp.TOTP(user_otp.otp_secret)
-        if totp.verify(code):
+        if totp.verify(code, valid_window=1):
             login(request, user)
             return redirect('dashboard')
         else:
