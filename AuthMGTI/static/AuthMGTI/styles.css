@@ -1,0 +1,264 @@
+:root {
+  /* Paleta de colores */
+  --primary: #FF4500;       /* Naranja vibrante principal */
+  --primary-hover: #E03E00; /* Naranja oscuro para hover */
+  --primary-light: #FF8C66; /* Naranja claro para fondos */
+  --dark: #000000;          /* Negro puro */
+  --dark-light: #2D2D2D;    /* Negro suavizado */
+  --gray: #5A5A5A;          /* Gris oscuro */
+  --gray-light: #E0E0E0;    /* Gris claro */
+  --bg: #F8F8F8;           /* Fondo general */
+  --card-bg: #FFFFFF;       /* Fondo de tarjetas */
+  --error: #D32F2F;         /* Rojo para errores */
+  --success: #388E3C;       /* Verde para éxito */
+  
+  /* Variables de diseño */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+/* Reset y estilos base */
+body {
+  font-family: 'Montserrat', sans-serif;
+  
+  /* Ruta CORRECTA para la imagen (2 opciones) */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/static/AuthMGTI/imgs/background-login.jpg') center/cover fixed no-repeat;
+    /* Alternativa si la anterior no funciona: */
+    /* url('../imgs/background-login.jpg') center/cover fixed no-repeat; */
+
+  color: var(--dark-light);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  min-height: 100vh; /* Asegura que cubra toda la pantalla */
+}
+
+/* Contenedor principal mejorado */
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px); /* Efecto vidrio moderno */
+  -webkit-backdrop-filter: blur(6px); /* Soporte para Safari */
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 69, 0, 0.2); /* Borde sutil naranja */
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde para efecto vidrio */
+}
+
+/* Media Query para móviles */
+@media (max-width: 600px) {
+  .container {
+    margin: 30px 15px;
+    padding: 1.5rem;
+  }
+  
+  body {
+    background-attachment: scroll; /* Mejor rendimiento en móviles */
+  }
+}
+
+
+
+
+
+
+.container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Tipografía */
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.message {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+/* Formularios */
+.form-group {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-light);
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.2);
+  outline: none;
+}
+
+/* Botones */
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 8px rgba(255, 69, 0, 0.2);
+}
+
+.button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 69, 0, 0.3);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.secondary-button {
+  background-color: var(--gray-light);
+  color: var(--dark);
+  margin-top: 0.8rem;
+}
+
+.secondary-button:hover {
+  background-color: #C0C0C0;
+}
+
+/* Divisor */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-light), transparent);
+  margin: 2rem 0;
+  border: none;
+}
+
+/* Enlaces */
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--primary-hover);
+}
+
+/* Mensajes */
+.error-messages {
+  color: var(--dark);
+  background-color: rgba(255, 69, 0, 0.1);
+  padding: 0.8rem;
+  margin-top: 1.2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  border-left: 4px solid var(--primary);
+}
+
+.success-messages {
+  color: var(--success);
+  background-color: rgba(56, 142, 60, 0.1);
+  padding: 0.8rem;
+  margin-top: 1.2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  border-left: 4px solid var(--success);
+}
+
+/* QR Code */
+.qr-code {
+  margin: 1.5rem auto;
+  display: block;
+  width: 180px;
+  height: 180px;
+  transition: var(--transition);
+  border: 1px solid var(--gray-light);
+  padding: 10px;
+  background: white;
+  border-radius: var(--border-radius);
+}
+
+.qr-code:hover {
+  transform: scale(1.05);
+  border-color: var(--primary);
+}
+
+/* Contador de caracteres (opcional) */
+.char-counter {
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
+.char-counter.warning {
+  color: #FFA500;
+}
+
+.char-counter.error {
+  color: var(--error);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 69, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+}
+
+.highlight {
+  animation: pulse 1.5s infinite;
+}

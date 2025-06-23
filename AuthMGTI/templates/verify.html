@@ -1,25 +1,44 @@
-<h2>Verificación MFA</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificación MFA</title>
+    <link rel="stylesheet" href="{% static 'AuthMGTI/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Verificación MFA</h2>
 
-{% if qr_base64 %}
-    <p>Escanea este código QR con Google Authenticator:</p>
-    <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code">
-{% else %}
-    <p>Introduce el código de 6 dígitos desde Google Authenticator:</p>
-{% endif %}
+        {% if qr_base64 %}
+            <p class="message">Escanea este código QR con Google Authenticator:</p>
+            <img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code" class="qr-code">
+        {% else %}
+            <p class="message">Introduce el código de 6 dígitos desde Google Authenticator:</p>
+        {% endif %}
 
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="code" placeholder="Código de 6 dígitos" required>
-    <button type="submit">Verificar</button>
-</form>
+        <!-- Formulario de código MFA -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="code" placeholder="Código de 6 dígitos" maxlength="6" pattern="\d{6}" required >
+            </div>
+            <button type="submit" class="button">Verificar</button>
+        </form>
 
-<!-- Botón para regenerar QR -->
-<form method="get" action="{% url 'regenerate_qr' %}">
-    <button type="submit">Regenerar QR</button>
-</form>
+        <!-- Botón para regenerar QR -->
+        <form method="get" action="{% url 'regenerate_qr' %}">
+            <button type="submit" class="button secondary-button">Regenerar QR</button>
+        </form>
 
-{% if messages %}
-    {% for message in messages %}
-        <p style="color:green;">{{ message }}</p>
-    {% endfor %}
-{% endif %}
+        <!-- Mensajes -->
+        {% if messages %}
+            <div class="success-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

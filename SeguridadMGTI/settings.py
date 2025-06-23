@@ -78,6 +78,8 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+
 WSGI_APPLICATION = 'SeguridadMGTI.wsgi.application'
 
 
