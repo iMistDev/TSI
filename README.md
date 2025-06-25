@@ -6,4 +6,4 @@
 - pillow
 - qrcode
 
-# Documentación sobre la Aplicación en el documento word "Seguridad MGTI"
+# Documentación sobre la Aplicación en el documento word "Documentación Mini Proyecto"
