@@ -6,4 +6,4 @@
 - pillow
 - qrcode
 
-# Documentación sobre la Aplicación en el documento word "Documentación Mini Proyecto"
+## Documentación sobre la Aplicación en el documento word "Documentación Mini Proyecto"
